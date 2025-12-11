@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 100%;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.nav-text-interactable {
+    color: rgb(19, 19, 19);
+    text-decoration-color: rgba(68, 68, 68, 0);
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: all 0.2s ease-in;
+    cursor: pointer;
+}
+
+.nav-text-interactable:hover {
+    text-decoration: underline;
+    text-decoration-color: rgb(68, 68, 68);
+    color: rgb(68, 68, 68);
+}
+
+.navbar-right-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 33%;
+}
+
+.icon-blue {
+    color: #0033FF;
+}
+
+.form-control:focus {
+    border-color: none;
+    box-shadow: none
+}

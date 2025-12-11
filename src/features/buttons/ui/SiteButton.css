@@ -1,0 +1,24 @@
+.site-button {
+    cursor: pointer;
+    font-weight: 500;
+    display: inline-block;
+    padding: 1em;
+}
+
+.button-white {
+    border: 1px solid #D2D9E1;
+    color: #0033FF;
+}
+
+.button-white:hover {
+    color: #5275FF;
+}
+
+.button-blue {
+    background-color: #0033FF;
+    color: white;
+}
+
+.button-blue:hover {
+    background-color: #2954FF;
+}

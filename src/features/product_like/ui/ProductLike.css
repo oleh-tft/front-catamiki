@@ -1,0 +1,10 @@
+.product-like-wrap {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    padding: 0.3em 1em;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    display: flex;
+    gap: 0.6em;
+}

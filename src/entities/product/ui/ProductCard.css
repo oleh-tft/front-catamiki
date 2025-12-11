@@ -1,0 +1,23 @@
+.product-card {
+    position: relative;
+}
+
+.product-card-imgs {
+
+}
+
+.product-name {
+    font-weight: bold;
+}
+
+.product-currentbid {
+    font-weight: 300;
+}
+
+.product-card-bid {
+    font-weight: bold;
+}
+
+.product-timeleft {
+    color: grey;
+}
