@@ -1,13 +1,13 @@
 import ButtonTypes from './types/ButtonTypes'
 import './ui/SiteButton.css'
 
-export default function SiteButton({text, buttonType, action}: {text:string, buttonType:ButtonTypes, action?: () => void}) {
-    const extraClass = 
+export default function SiteButton({ text, buttonType, action, maxWidth }: { text: string, buttonType: ButtonTypes, action?: () => void, maxWidth?: string }) {
+    const extraClass =
         buttonType == ButtonTypes.White ? "button-white"
-        : buttonType == ButtonTypes.Blue ? "button-blue"
-        : ""
+            : buttonType == ButtonTypes.Blue ? "button-blue"
+                : ""
 
-    return <div className={"site-button " + extraClass}  onClick={action}>
+    return <div className={"site-button " + extraClass} onClick={action} style={{maxWidth: maxWidth}}>
         {text}
     </div>
 }

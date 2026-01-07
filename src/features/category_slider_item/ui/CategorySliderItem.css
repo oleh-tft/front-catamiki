@@ -1,0 +1,13 @@
+.category-small {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1em;
+}
+
+.category-card-small-text {
+    font-size: 1em;
+    font-weight: 500;
+    margin-bottom: 10px;
+}

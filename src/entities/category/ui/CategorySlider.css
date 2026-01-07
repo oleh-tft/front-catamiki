@@ -1,0 +1,37 @@
+.categories-box {
+    position: relative;
+}
+
+.categories-scroll-wrap {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+}
+
+.categories-scroll-wrap .slider-item {
+    flex-shrink: 0;
+}
+
+.categories-arrow-right {
+    color: #0033FF;
+    padding: 1.2em 0.8em;
+    background-color: #ffffffd8;
+    position: absolute;
+    right: -35px;
+    height: 80%;
+    justify-content: center;
+    user-select: none;
+}
+
+.categories-arrow-left {
+    color: #0033FF;
+    padding: 1.2em 0.8em;
+    background-color: #ffffffd8;
+    position: absolute;
+    left: -35px;
+    height: 80%;
+    justify-content: center;
+    user-select: none;
+}

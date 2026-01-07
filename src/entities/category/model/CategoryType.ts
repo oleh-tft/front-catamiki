@@ -1,7 +1,7 @@
 import type { ProductType } from "../../product/model/ProductType"
 
-type SectionType = {
+type CategoryType = {
     products: Array<ProductType>
 }
 
-export type { SectionType }
+export type { CategoryType }

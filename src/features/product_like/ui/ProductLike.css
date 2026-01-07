@@ -7,4 +7,12 @@
     border-radius: 20px;
     display: flex;
     gap: 0.6em;
+    color: #565b60;
+    font-weight: 400;
+    font-size: .875em;
+    letter-spacing: .08125em;
+}
+
+.product-like-wrap:hover {
+    color: #949494;
 }

@@ -1,0 +1,21 @@
+.toaster {
+    position: fixed;
+    bottom: 6em;
+    right: 1em;
+    width: 20em;
+    z-index: 3;
+}
+
+.toast-wrap {
+    background-color: #03f;
+    box-shadow: 0 .25em .5em rgba(0,0,0,.56);
+    margin-top: 0.4em;
+    padding: 0.2em 0;
+}
+
+.toast-text {
+    color: #fff;
+    font-weight: 500;
+    padding: 7px 15px;
+    text-align: center;
+}

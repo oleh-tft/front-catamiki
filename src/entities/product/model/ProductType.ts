@@ -1,11 +1,13 @@
 type ProductType = {
     id: string,
+    categoryId: string,
     name: string,
+    slug: string|undefined,
     bid: number,
-    timeleft: string,
     imageUrl: string,
-    likes: number|null,
-    slug: string|undefined
+    likes?: number,
+    timestart: string,
+    timeend: string
 }
 
 export type { ProductType }
