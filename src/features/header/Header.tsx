@@ -4,7 +4,7 @@ import CategorySlider from "../../entities/category/ui/CategorySlider";
 import SiteButton from "../buttons/SiteButton";
 import ButtonTypes from "../buttons/types/ButtonTypes";
 import SignInButton from "../modals/SignInButton";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "../app_context/AppContext";
 import './ui/Header.css'
 
@@ -12,6 +12,7 @@ import './ui/Header.css'
 export default function Header() {
     const { user, setUser, showToast } = useContext(AppContext)
     const navigate = useNavigate();
+    const [query, setQuery] = useState("")
 
     const exitAuth = () => {
         window.localStorage.removeItem("cm-user")
@@ -27,12 +28,12 @@ export default function Header() {
                 <CategoryPopup />
                 <div className="collapse navbar-collapse mx-4" id="navbarScroll">
                     <form className="d-flex flex-grow-1" role="search">
-                        <input className="form-control me-2" type="search" placeholder="Search for brand, model, artist..." aria-label="Search" />
+                        <input className="form-control me-2" type="search" placeholder="Search for brand, model, artist..." aria-label="Search" value={query} onChange={e => setQuery(e.target.value)}/>
                     </form>
                 </div>
                 <div className='navbar-right-wrap'>
-                    <Link to="/"><span className="nav-text-interactable">{user ? 'Sell' : 'How it works?'}</span></Link>
-                    <Link to="/"><span className="nav-text-interactable">Help</span></Link>
+                    <Link to="/privacy"><span className="nav-text-interactable">{user ? 'Sell' : 'How it works?'}</span></Link>
+                    <Link to="/privacy"><span className="nav-text-interactable">Help</span></Link>
                     <Link to="/"><i className="bi bi-heart icon-blue-hoverable"></i></Link>
                     <Link to="/"><i className="bi bi-globe icon-blue-hoverable"></i> EN</Link>
                     {user

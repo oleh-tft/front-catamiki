@@ -10,7 +10,7 @@ import 'flag-icons/css/flag-icons.min.css';
 import ProductCard from '../../entities/product/ui/ProductCard'
 
 export default function Product() {
-    const { setBusy, isBusy } = useContext(AppContext)
+    const { setBusy, isBusy, active, setActive, showToast, user } = useContext(AppContext)
     const { slug } = useParams<string>()
     const [pageData, setPageData] = useState<ProductPageType | null>(null)
     const [bid, setBid] = useState<number>(0)
@@ -32,6 +32,21 @@ export default function Product() {
                 .finally(() => setBusy(false))
         }
     }, [slug])
+
+    const placeBid = () => {
+        const newActive = {...active}
+        if (!user) return
+        if (!pageData) return
+        if (newActive.items.find(i => i.item.id === pageData?.product.id)) return
+        newActive.items.push({
+            item: pageData?.product,
+            ordered: false,
+            received: false,
+            finalBid: bid
+        })
+        setActive(newActive)
+        showToast({message: "You have joined an auction"})
+    }
 
     return <div className='product-page'>
         <div className='product-page-content'>
@@ -91,7 +106,7 @@ export default function Product() {
                     </div>
                     <input type="text" name="bid" id="bid" className="form-control mb-2 form-bid" placeholder={`${(pageData?.product.bid ?? 0) + 10} or up`} value={bid ? bid : ""} onChange={e => setBid(parseInt(e.target.value))} />
                     <div className='product-bid-btns'>
-                        <SiteButton text='Place bid' buttonType={ButtonTypes.White} />
+                        <SiteButton text='Place bid' buttonType={ButtonTypes.White} action={() => placeBid()}/>
                         <SiteButton text='Set max bid' buttonType={ButtonTypes.Blue} />
                     </div>
                     <div className='product-bidders-num'>19 other people are watching this object</div>
@@ -109,7 +124,7 @@ export default function Product() {
         <div className='product-page-recommended'>
             <h5>Similar objects</h5>
             <div className="products-container mt-5">
-                {pageData?.recommended.map(product => <ProductCard product={product} key={product.id} />)}
+                {pageData?.recommended.sort(() => 0.5 - Math.random()).slice(0, 4).map(product => <ProductCard product={product} key={product.id} />)}
             </div>
         </div>
     </div>

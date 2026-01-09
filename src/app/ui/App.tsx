@@ -52,6 +52,7 @@ function App() {
   const [modalData, setModalData] = useState<ModalData | null>(null)
   const [isBusy, setBusy] = useState<boolean>(false)
   const [cart, setCart] = useState<AuctionCartType>(AuctionDao.restoreSaved())
+  const [active, setActive] = useState<AuctionCartType>(AuctionDao.restoreSavedActive())
 
   const dequeueToast = () => {
     setToastQueue(q => q.slice(0, q.length - 1))
@@ -100,7 +101,11 @@ function App() {
     AuctionDao.save(cart)
   }, [cart])
 
-  return <AppContext.Provider value={{ setBusy, isBusy, user, setUser, showToast, showModal, clearModal, cart, setCart }}>
+  useEffect(() => {
+    AuctionDao.saveActive(active)
+  }, [active])
+
+  return <AppContext.Provider value={{ setBusy, isBusy, user, setUser, showToast, showModal, clearModal, cart, setCart, active, setActive }}>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>

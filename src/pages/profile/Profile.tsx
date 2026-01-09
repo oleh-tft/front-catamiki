@@ -48,33 +48,24 @@ function Won() {
                     {cart.items.map(auc => <AuctionCartItemCard item={auc} />)}
                 </div>
             </>
-            : <><h5 className='text-center'>You did not win anything yet.</h5></>}
+            : <><h5 className='text-center'>You did not win anything yet</h5></>}
     </>
 }
 
-function getRandomItem<T>(array: T[]): T {
-    const shuffled = [...array]
-
-    for (let i = shuffled.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1))
-            ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
-    }
-
-    return shuffled.slice(0, 1)[0]
-}
-
 function Active() {
-    const wonAuctions: AuctionCartItem[] = [
-        { item: getRandomItem(AllProducts.products), finalBid: Math.floor(Math.random() * (1000 - 15 + 1)) + 15, received: false, ordered: false },
-        { item: getRandomItem(AllProducts.products), finalBid: Math.floor(Math.random() * (1000 - 15 + 1)) + 15, received: false, ordered: false },
-        { item: getRandomItem(AllProducts.products), finalBid: Math.floor(Math.random() * (1000 - 15 + 1)) + 15, received: false, ordered: false }]
+    const { active } = useContext(AppContext)
 
     return <>
-        <h5 className='profile-title'>Active</h5>
-        <div className='profile-line-light'></div>
-        <div className='profile-won-auctions'>
-            {wonAuctions.map(auc => <AuctionActiveCard item={auc} />)}
-        </div>
+        {active.items.length > 0 ?
+            <>
+                <h5 className='profile-title'>Active</h5>
+                <div className='profile-line-light'></div>
+                <div className='profile-won-auctions'>
+                    {active.items.map(auc => <AuctionActiveCard item={auc} />)}
+                </div>
+            </>
+            : <h5 className='text-center'>You don't have active auctions</h5>
+        }
     </>
 }
 

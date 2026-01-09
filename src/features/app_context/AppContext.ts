@@ -13,7 +13,9 @@ type AppContextType = {
     setBusy: (isBusy: boolean) => void,
     isBusy: boolean,
     cart: AuctionCartType,
-    setCart: (input: AuctionCartType) => void
+    setCart: (input: AuctionCartType) => void,
+    active: AuctionCartType,
+    setActive: (input: AuctionCartType) => void
 }
 
 const AppContext = createContext<AppContextType>({
@@ -37,6 +39,10 @@ const AppContext = createContext<AppContextType>({
     cart: {items:[]},
     setCart: (_) => {
         throw "Not Implemented 'setCart'"
+    },
+    active: {items:[]},
+    setActive: (_) => {
+        throw "Not Implemented 'setActive'"
     }
 })
 

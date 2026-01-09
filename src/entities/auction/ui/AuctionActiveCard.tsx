@@ -6,15 +6,20 @@ import './AuctionCartItemCard.css'
 import { AppContext } from '../../../features/app_context/AppContext'
 
 export default function AuctionActiveCard({ item }: { item: AuctionCartItem }) {
-    const { cart, setCart, showToast } = useContext(AppContext)
+    const { cart, setCart, showToast, active, setActive } = useContext(AppContext)
     const winClick = () => {
         let newCart = { ...cart }
         newCart.items.push({
             item: item.item,
             finalBid: item.finalBid,
-            received: false
+            received: false,
+            ordered: false
         })
+        
         setCart(newCart)
+        setActive({ ...active,
+                items: cart.items.filter(ci => ci.item.id !== item.item.id)
+            })
         showToast({message: "Added to won auctions: " + item.item.name})
     }
 
