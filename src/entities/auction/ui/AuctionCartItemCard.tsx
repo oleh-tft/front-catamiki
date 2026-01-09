@@ -6,27 +6,32 @@ import './AuctionCartItemCard.css'
 import { AppContext } from '../../../features/app_context/AppContext'
 
 export default function AuctionCartItemCard({ item }: { item: AuctionCartItem }) {
-    const {cart, showModal, clearModal, setCart, showToast} = useContext(AppContext)
+    const { cart, showModal, clearModal, setCart, showToast, user } = useContext(AppContext)
 
     const setOrderState = () => {
-        const newCart = {...cart}
-        let found = newCart.items.find(i => i.item.id === item.item.id)
-        if (found) {
-            found.ordered = true
+        if (!user?.address || !user.address.city || !user.address.country || !user.address.house || !user.address.postal || !user.address.street) {
+            showToast({ message: 'You must fill in your address before ordering' })
         }
-        setCart(newCart)
-        showToast({message: 'Awaiting delivery: ' + item.item.name})
+        else {
+            const newCart = { ...cart }
+            let found = newCart.items.find(i => i.item.id === item.item.id)
+            if (found) {
+                found.ordered = true
+            }
+            setCart(newCart)
+            showToast({ message: 'Awaiting delivery: ' + item.item.name })
+        }
         clearModal()
     }
 
     const setReceivedState = () => {
-        const newCart = {...cart}
+        const newCart = { ...cart }
         let found = newCart.items.find(i => i.item.id === item.item.id)
         if (found) {
             found.received = true
         }
         setCart(newCart)
-        showToast({message: 'Confirmed received: ' + item.item.name})
+        showToast({ message: 'Confirmed received: ' + item.item.name })
         clearModal()
     }
 
@@ -35,10 +40,12 @@ export default function AuctionCartItemCard({ item }: { item: AuctionCartItem })
             isCancellable: true,
             title: "New order",
             children: <>
-                <div className='new-order-message'>Confirm creation of new order</div>
+                <div className='new-order-message'>
+                    <div>You must pay ${item.finalBid + item.item.delivery} to create an order</div>
+                </div>
                 <div className='new-order-btns'>
-                    <SiteButton text='Confirm' buttonType={ButtonTypes.Blue} action={() => setOrderState()}/>
-                    <SiteButton text='Cancel' buttonType={ButtonTypes.White} action={() => clearModal()}/>
+                    <SiteButton text='Confirm' buttonType={ButtonTypes.Blue} action={() => setOrderState()} />
+                    <SiteButton text='Cancel' buttonType={ButtonTypes.White} action={() => clearModal()} />
                 </div>
             </>
         })
@@ -51,8 +58,8 @@ export default function AuctionCartItemCard({ item }: { item: AuctionCartItem })
             children: <>
                 <div className='new-order-message'>Confirm delivery of an order</div>
                 <div className='new-order-btns'>
-                    <SiteButton text='Confirm' buttonType={ButtonTypes.Blue} action={() => setReceivedState()}/>
-                    <SiteButton text='Cancel' buttonType={ButtonTypes.White} action={() => clearModal()}/>
+                    <SiteButton text='Confirm' buttonType={ButtonTypes.Blue} action={() => setReceivedState()} />
+                    <SiteButton text='Cancel' buttonType={ButtonTypes.White} action={() => clearModal()} />
                 </div>
             </>
         })
@@ -68,26 +75,26 @@ export default function AuctionCartItemCard({ item }: { item: AuctionCartItem })
         </div>
         <div className='auction-card-right'>
             {item.received ? <div className='auction-card-received'>received</div>
-            :item.ordered ? 
-            <div className='auction-card-order'>
-                <div className='auction-card-delivery'>awaiting delivery</div>
-                <SiteButton text='Confirm received' buttonType={ButtonTypes.Blue} action={receiveClick}/>
-            </div>
-            :
-                <div className='auction-card-order'>
-                    <div className='d-flex'>
-                        <div className='auction-card-order-block'>
-                            <div className='auction-card-final-bid'>YOUR FINAL BID</div>
-                            <div className='auction-card-final-value'>$ {item.finalBid}</div>
-                        </div>
-                        <div className='auction-card-order-block-separator'></div>
-                        <div className='auction-card-order-block'>
-                            <div className='auction-card-final-bid'>DELIVERY FEE</div>
-                            <div className='auction-card-final-value'>$ {item.item.delivery}</div>
-                        </div>
+                : item.ordered ?
+                    <div className='auction-card-order'>
+                        <div className='auction-card-delivery'>awaiting delivery</div>
+                        <SiteButton text='Confirm received' buttonType={ButtonTypes.Blue} action={receiveClick} />
                     </div>
-                    <SiteButton text='Order' buttonType={ButtonTypes.Blue} action={orderClick}/>
-                </div>}
+                    :
+                    <div className='auction-card-order'>
+                        <div className='d-flex'>
+                            <div className='auction-card-order-block'>
+                                <div className='auction-card-final-bid'>YOUR FINAL BID</div>
+                                <div className='auction-card-final-value'>$ {item.finalBid}</div>
+                            </div>
+                            <div className='auction-card-order-block-separator'></div>
+                            <div className='auction-card-order-block'>
+                                <div className='auction-card-final-bid'>DELIVERY FEE</div>
+                                <div className='auction-card-final-value'>$ {item.item.delivery}</div>
+                            </div>
+                        </div>
+                        <SiteButton text='Order' buttonType={ButtonTypes.Blue} action={orderClick} />
+                    </div>}
         </div>
     </div>
 }

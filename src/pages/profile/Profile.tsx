@@ -5,8 +5,6 @@ import AuctionCartItemCard from '../../entities/auction/ui/AuctionCartItemCard'
 import AuctionActiveCard from '../../entities/auction/ui/AuctionActiveCard'
 import SiteButton from '../../features/buttons/SiteButton'
 import ButtonTypes from '../../features/buttons/types/ButtonTypes'
-import type AuctionCartItem from '../../entities/auction/model/AuctionCartItem'
-import AllProducts from '../../app/AllProducts'
 
 enum Page {
     Won,
@@ -18,7 +16,7 @@ export default function Profile() {
     const { user } = useContext(AppContext)
     const [pageType, setPageType] = useState<Page>(Page.Won)
 
-    return <div className='profile-container'>
+    return (user ? <div className='profile-container'>
         <h1>Hello {user?.name}</h1>
         <div className='profile-line'></div>
         <div className='profile-content'>
@@ -34,6 +32,7 @@ export default function Profile() {
             </div>
         </div>
     </div>
+    : <div className='page-not-found'>You must be logged in to access this page</div>)
 }
 
 function Won() {
@@ -112,7 +111,6 @@ function Account() {
                     <input type="text" name="name" id="name" className="form-control" placeholder='Name' value={name} onChange={e => setName(e.target.value)} />
                     <label htmlFor="name">Name</label>
                 </div>
-                <SiteButton text='Save' buttonType={ButtonTypes.Blue} action={saveUser} />
             </div>
             <div className='profile-block-flex'>
                 <h6>Surname</h6>
@@ -120,7 +118,6 @@ function Account() {
                     <input type="text" name="surname" id="surname" className="form-control" placeholder='Surname' value={surname} onChange={e => setSurname(e.target.value)} />
                     <label htmlFor="surname">Surname</label>
                 </div>
-                <SiteButton text='Save' buttonType={ButtonTypes.Blue} action={saveUser} />
             </div>
             <div className='profile-block-flex'>
                 <h6>Username</h6>
@@ -133,7 +130,6 @@ function Account() {
                     <input type="email" name="email" id="email" className="form-control" placeholder='Email' value={email} onChange={e => setEmail(e.target.value)} />
                     <label htmlFor="email">Email</label>
                 </div>
-                <SiteButton text='Save' buttonType={ButtonTypes.Blue} action={saveUser} />
             </div>
             <div className='profile-block-flex'>
                 <h6>Password</h6>
@@ -141,7 +137,6 @@ function Account() {
                     <input type="password" name="password" id="password" className="form-control" placeholder='Password' value={password} onChange={e => setPassword(e.target.value)} />
                     <label htmlFor="password">Password</label>
                 </div>
-                <SiteButton text='Save' buttonType={ButtonTypes.Blue} action={saveUser} />
             </div>
             <div className='profile-block-flex'>
                 <h6>Phone</h6>
@@ -149,7 +144,6 @@ function Account() {
                     <input type="text" name="phone" id="phone" className="form-control" placeholder='Phone' value={phone} onChange={e => setPhone(e.target.value)} />
                     <label htmlFor="phone">Phone</label>
                 </div>
-                <SiteButton text='Save' buttonType={ButtonTypes.Blue} action={saveUser} />
             </div>
             <br />
             <div className='profile-block-flex'>
@@ -158,7 +152,6 @@ function Account() {
                     <input type="text" name="country" id="country" className="form-control" placeholder='Country' value={country} onChange={e => setCountry(e.target.value)} />
                     <label htmlFor="country">Country</label>
                 </div>
-                <SiteButton text='Save' buttonType={ButtonTypes.Blue} action={saveUser} />
             </div>
             <div className='profile-block-flex'>
                 <h6>Street</h6>
@@ -166,7 +159,6 @@ function Account() {
                     <input type="text" name="street" id="street" className="form-control" placeholder='Street' value={street} onChange={e => setStreet(e.target.value)} />
                     <label htmlFor="street">Street</label>
                 </div>
-                <SiteButton text='Save' buttonType={ButtonTypes.Blue} action={saveUser} />
             </div>
             <div className='profile-block-flex'>
                 <h6>House</h6>
@@ -174,7 +166,6 @@ function Account() {
                     <input type="text" name="house" id="house" className="form-control" placeholder='House' value={house} onChange={e => setHouse(e.target.value)} />
                     <label htmlFor="house">House</label>
                 </div>
-                <SiteButton text='Save' buttonType={ButtonTypes.Blue} action={saveUser} />
             </div>
             <div className='profile-block-flex'>
                 <h6>Postal</h6>
@@ -182,7 +173,6 @@ function Account() {
                     <input type="text" name="postal" id="postal" className="form-control" placeholder='Postal' value={postal} onChange={e => setPostal(e.target.value)} />
                     <label htmlFor="postal">Postal</label>
                 </div>
-                <SiteButton text='Save' buttonType={ButtonTypes.Blue} action={saveUser} />
             </div>
             <div className='profile-block-flex'>
                 <h6>City</h6>
@@ -190,8 +180,8 @@ function Account() {
                     <input type="text" name="city" id="city" className="form-control" placeholder='City' value={city} onChange={e => setCity(e.target.value)} />
                     <label htmlFor="city">City</label>
                 </div>
-                <SiteButton text='Save' buttonType={ButtonTypes.Blue} action={saveUser} />
             </div>
         </div>
+        <div className='profile-block-btn'><SiteButton text='Save' buttonType={ButtonTypes.Blue} action={saveUser} maxWidth='200px'/></div>
     </>
 }

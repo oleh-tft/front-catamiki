@@ -82,6 +82,10 @@
     height: 100%;
 }
 
+.active-btn-auc {
+    justify-content: center;
+}
+
 .auction-card-final-bid {
     text-transform: uppercase;
     font-weight: 400;

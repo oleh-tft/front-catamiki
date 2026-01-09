@@ -18,7 +18,6 @@ export default function Header() {
         window.localStorage.removeItem("cm-user")
         setUser(null)
         showToast({ message: 'You have logged out' })
-        navigate('/')
     }
 
     return <header className='container px-4'>
