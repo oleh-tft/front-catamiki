@@ -2,6 +2,7 @@ import { createContext } from "react"
 import type ModalData from "./ModalData"
 import type ToastData from "./ToastData"
 import type { UserType } from "../../entities/user/model/UserType"
+import type AuctionCartType from "../../entities/auction/model/AuctionCartType"
 
 type AppContextType = {
     user: UserType | null,
@@ -11,8 +12,8 @@ type AppContextType = {
     clearModal: () => void,
     setBusy: (isBusy: boolean) => void,
     isBusy: boolean,
-    // cart: CartType,
-    // setCart: (input: CartType) => void
+    cart: AuctionCartType,
+    setCart: (input: AuctionCartType) => void
 }
 
 const AppContext = createContext<AppContextType>({
@@ -33,10 +34,10 @@ const AppContext = createContext<AppContextType>({
         throw "Not Implemented 'setBusy'"
     },
     isBusy: false,
-    // cart: {items:[], price: 0},
-    // setCart: (_) => {
-    //     throw "Not Implemented 'setCart'"
-    // }
+    cart: {items:[]},
+    setCart: (_) => {
+        throw "Not Implemented 'setCart'"
+    }
 })
 
 export { AppContext }

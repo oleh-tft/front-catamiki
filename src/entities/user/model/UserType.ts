@@ -1,11 +1,13 @@
+import type { AddressType } from "./AddressType"
+
 type UserType = {
     name: string,
     surname: string,
     username: string,
     email: string,
+    password: string,
     phone?: string,
-    imageUrl?: string,
-    dob: string
+    address: AddressType
 }
 
 export type { UserType }

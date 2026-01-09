@@ -9,14 +9,14 @@ export default class UserDao {
                         name: "John",
                         surname: "Doe",
                         username: "user-65602caaf45b",
+                        password: "123",
                         email: "a@ha.ha",
-                        dob: "1998-10-05",
-                        imageUrl: "img/user.jpg"
+                        address: {}
                     })
                 } else {
                     resolve(null)
                 }
-            }, 700)
+            }, 1200)
         })
     }
 }

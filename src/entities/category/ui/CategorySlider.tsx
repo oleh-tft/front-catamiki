@@ -6,6 +6,7 @@ import CategorySliderItem from '../../../features/category_slider_item/CategoryS
 
 const basicCategories:Array<Category> =  [
         {
+            id: "c8a01a9a-f119-4c71-9d84-9d6d633324ac",
             title: "This week",
             color: "#0033FF",
             slug: "../",
@@ -13,6 +14,7 @@ const basicCategories:Array<Category> =  [
             smallIcon: "bi bi-cash"
         },
         {
+            id: "afdfade0-c1ce-49a8-ab9b-c4bc53c9a453",
             title: "For you",
             color: "#0033FF",
             slug: "for-you",
@@ -20,6 +22,7 @@ const basicCategories:Array<Category> =  [
             smallIcon: "bi bi-stars"
         },
         {
+            id: "84729ebd-099e-4316-af8c-6a9ac209f052",
             title: "Trending",
             color: "#0033FF",
             slug: "trending",

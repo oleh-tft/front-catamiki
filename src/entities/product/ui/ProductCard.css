@@ -1,6 +1,7 @@
 .product-card {
     position: relative;
     font-weight: 500;
+    margin-bottom: 3em;
 }
 
 .product-card-imgs {
@@ -23,6 +24,7 @@
 
 .product-currentbid {
     margin-top: .75em;
+    margin-bottom: .5em;
     font-size: .625em;
     font-weight: 400;
     letter-spacing: .05625em;

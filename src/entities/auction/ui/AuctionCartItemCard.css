@@ -1,0 +1,115 @@
+.auction-card-container {
+    display: flex;
+}
+
+.auction-card-text h5 {
+    font-size: .975em;
+    margin: 0;
+}
+
+.auction-card-text h6 {
+    font-size: .775em;
+    margin: 0;
+    color: rgb(179, 179, 179);
+}
+
+.auction-card-text {
+    width: 82%;
+    display: flex;
+    flex-direction: column;
+}
+
+.auction-card-left {
+    width: 65%;
+    display: flex;
+    padding: 1em;
+    border-right: 1px solid #eaedf0;
+}
+
+.auction-card-right {
+    width: 35%;
+    padding: 1em;
+}
+
+.auction-card-container:not(:last-child) {
+    border-bottom: 1px solid #eaedf0;
+}
+
+.auction-card-img-wrap {
+    width: 18%;
+    height: 125px;
+    overflow: hidden;
+    margin-right: 1em;
+}
+.auction-card-img-wrap img {
+    width: 100%;
+    object-fit: scale-down;
+    object-position: center;
+}
+
+.auction-card-received {
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 1.725em;
+    letter-spacing: .05625em;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    color: #767779;
+}
+
+.auction-card-delivery {
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 1.225em;
+    letter-spacing: .05625em;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    color: #767779;
+}
+
+.auction-card-order {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.auction-card-final-bid {
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: .625em;
+    letter-spacing: .05625em;
+    line-height: 1.2;
+}
+
+.auction-card-final-value {
+    font-size: 1.25em;
+    margin-bottom: .5em;
+}
+
+.auction-card-order-block {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.auction-card-order-block-separator {
+    width: 2px;
+    height: 40px;
+    background-color: #eaedf0;
+}
+
+.new-order-btns {
+    margin-top: 1em;
+    display: flex;
+    gap: 5%
+}

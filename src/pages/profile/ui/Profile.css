@@ -1,0 +1,83 @@
+.profile-container {
+    margin: 1em 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-container h1 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 4em;
+    margin-bottom: .5em;
+}
+
+.profile-title {
+    font-size: 1.765em;
+}
+
+.profile-line { 
+    width: 100%;
+    border-bottom: 1px solid #d2d9e1;
+}
+
+.profile-line-light {
+    width: 100%;
+    border-bottom: 1px solid #eaedf0;
+}
+
+.profile-content {
+    display: flex;
+    margin-top: 3.5em;
+}
+
+.profile-left {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-right {
+    width: 70%;
+}
+
+.profile-page {
+    cursor: pointer;
+    margin-bottom: 0.5em;
+}
+
+.profile-account-block {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.profile-won-auctions {
+    width: 100%;
+    border: 1px solid #eaedf0;
+}
+
+.profile-block-flex {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+.profile-block-flex h6 {
+    font-size: .625em;
+    font-weight: 400;
+    letter-spacing: .05625em;
+    text-transform: uppercase;
+}
+
+.form-username-read {
+    color: #acacac;
+}
+
+.form-username-read:focus {
+    color: #acacac;
+}
+
+.form-username {
+    margin: 2em 0;
+    color: #565b60;
+    font-size: .75em;
+}

@@ -2,11 +2,21 @@ import { Link } from 'react-router-dom'
 import './ui/Footer.css'
 import { useContext } from 'react'
 import { AppContext } from '../app_context/AppContext'
+import SignInButton from '../modals/SignInButton'
 
 export default function Footer() {
     const { user } = useContext(AppContext)
 
     return <footer className='footer-main'>
+        {!user && <div className='footer-line footer-sign-in'>
+            <div className='footer-cont-up'>
+                <div className='upper-footer-btns'>
+                    <SignInButton registered={true} />
+                    <SignInButton registered={false} />
+                </div>
+                <div className='upper-footer-info'>Bid on over 65,000 special objects every week, selected by 240+ experts</div>
+            </div>
+        </div>}
         <div className='footer-line'>
             <div className='footer-container footer-map'>
                 <div className='footer-flex-1'>

@@ -13,6 +13,9 @@ import Home from "../../pages/home/Home"
 import NotFound from "../../pages/not_found/NotFound"
 import Privacy from "../../pages/privacy/Privacy"
 import Product from "../../pages/product/Product"
+import Profile from "../../pages/profile/Profile"
+import type AuctionCartType from "../../entities/auction/model/AuctionCartType"
+import AuctionDao from "../../entities/auction/api/AuctionDao"
 
 declare global {
   interface Number {
@@ -48,7 +51,7 @@ function App() {
   const [toastQueue, setToastQueue] = useState<Array<ToastData>>([])
   const [modalData, setModalData] = useState<ModalData | null>(null)
   const [isBusy, setBusy] = useState<boolean>(false)
-  // const [cart, setCart] = useState<CartType>(CartDao.restoreSaved())
+  const [cart, setCart] = useState<AuctionCartType>(AuctionDao.restoreSaved())
 
   const dequeueToast = () => {
     setToastQueue(q => q.slice(0, q.length - 1))
@@ -93,12 +96,17 @@ function App() {
     return () => { }
   }, [])
 
-  return <AppContext.Provider value={{ setBusy, isBusy, user, setUser, showToast, showModal, clearModal }}>
+  useEffect(() => {
+    AuctionDao.save(cart)
+  }, [cart])
+
+  return <AppContext.Provider value={{ setBusy, isBusy, user, setUser, showToast, showModal, clearModal, cart, setCart }}>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="privacy" element={<Privacy />} />
+          <Route path="profile" element={<Profile />} />
           <Route path='l/:slug' element={<Product />} />
           <Route path='c/:slug' element={<Category />} />
           <Route path='*' element={<NotFound />} />
@@ -115,7 +123,7 @@ function App() {
     {isBusy &&
       <div className='preloader'>
         <div className='preloader-content'>
-          <img className="preloader-spinner" src="/img/Spinner.gif" alt="loading" />
+          <img className="preloader-spinner" src="/img/Spinner.svg" alt="loading" />
         </div>
       </div>
     }
