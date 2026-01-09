@@ -1,6 +1,6 @@
 import ProductCard from '../../entities/product/ui/ProductCard'
 import './ui/Home.css'
-import AllProducts from '../../app/AllProducts'
+import AllProducts from '../../entities/product/model/AllProducts'
 
 export default function Home() {
     return <div className="products-container mt-5">

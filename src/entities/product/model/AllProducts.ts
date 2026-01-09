@@ -1,5 +1,5 @@
-import type { ProductType } from "../entities/product/model/ProductType";
-import AllCategories from "./AllCategories";
+import AllCategories from "../../category/model/AllCategories";
+import type { ProductType } from "./ProductType";
 
 const products: ProductType[] = [
     {

@@ -1,5 +1,5 @@
-import AllCategories from "../../../app/AllCategories";
-import AllProducts from "../../../app/AllProducts";
+import AllProducts from "../../product/model/AllProducts";
+import AllCategories from "../model/AllCategories";
 import type { CategoryType } from "../model/CategoryType";
 import type { Category } from "../types/category";
 

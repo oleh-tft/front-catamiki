@@ -5,7 +5,7 @@ import './ui/CategorySliderItem.css'
 export default function CategorySliderItem({ category }: { category: Category}) {
 
     return <NavLink to={"/c/" + category.slug} className={"slider-item"}>
-        {({ isActive }) => (
+        {({ isActive }: { isActive: boolean }) => (
             <div className='category-small category-rect' style={{
                 color: isActive ? "black" : "#565b60",
                 borderBottom: isActive ? `4px solid ${category.color}` : "none"

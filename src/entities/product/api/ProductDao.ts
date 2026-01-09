@@ -1,4 +1,4 @@
-import AllProducts from "../../../app/AllProducts"
+import AllProducts from "../model/AllProducts"
 import type ProductPageType from "../model/ProductPageType"
 
 export default class ProductDao {

@@ -1,6 +1,14 @@
+import { useLocation } from 'react-router-dom';
 import './ui/Privacy.css'
+import { useEffect } from 'react';
 
 export default function Privacy() {
+    const { pathname } = useLocation()
+
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }, [pathname]);
+
     return <div className='profile-container'>
         <h1>Terms and Policies</h1>
         <div className='profile-line'></div>

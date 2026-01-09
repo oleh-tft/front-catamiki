@@ -1,4 +1,4 @@
-import type { Category } from "../entities/category/types/category";
+import type { Category } from "../types/category"
 
 const categories: Category[] = [
     {

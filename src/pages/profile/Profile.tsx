@@ -6,12 +6,6 @@ import AuctionActiveCard from '../../entities/auction/ui/AuctionActiveCard'
 import SiteButton from '../../features/buttons/SiteButton'
 import ButtonTypes from '../../features/buttons/types/ButtonTypes'
 
-enum Page {
-    Won,
-    Active,
-    Account
-}
-
 export default function Profile() {
     const { user } = useContext(AppContext)
     const [pageType, setPageType] = useState<Page>(Page.Won)
@@ -33,6 +27,12 @@ export default function Profile() {
         </div>
     </div>
     : <div className='page-not-found'>You must be logged in to access this page</div>)
+}
+
+enum Page {
+    Won,
+    Active,
+    Account
 }
 
 function Won() {

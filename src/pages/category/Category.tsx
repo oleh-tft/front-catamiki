@@ -14,10 +14,14 @@ export default function Category() {
 
     useEffect(() => {
         setBusy(true)
-        console.log(slug)
         if (typeof (slug) != 'undefined') {
-            if (slug === 'for-you' || slug === 'trending') {
+            if (slug === 'for-you') {
                 CategoryDao.getCategory('art')
+                    .then(setPageData)
+                    .catch(() => setPageData(null))
+                    .finally(() => setBusy(false))
+            } else if (slug === 'trending') {
+                CategoryDao.getCategory('asian-tribal-art')
                     .then(setPageData)
                     .catch(() => setPageData(null))
                     .finally(() => setBusy(false))
